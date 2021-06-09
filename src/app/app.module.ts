@@ -9,6 +9,10 @@ import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { Contacts } from "@ionic-native/contacts/ngx";
+
+import { NgxQRCodeModule } from "@techiediaries/ngx-qrcode";
+import { Base64ToGallery } from "@ionic-native/base64-to-gallery/ngx";
+import { BarcodeScanner } from "@ionic-native/barcode-scanner/ngx";
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -18,6 +22,9 @@ import { Contacts } from "@ionic-native/contacts/ngx";
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Contacts,
+    NgxQRCodeModule,
+    Base64ToGallery,
+    BarcodeScanner,
   ],
   bootstrap: [AppComponent],
 })

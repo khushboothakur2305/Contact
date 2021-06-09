@@ -1,5 +1,8 @@
 import { Component } from "@angular/core";
+import { BarcodeScanner } from "@ionic-native/barcode-scanner/ngx";
+import { Base64ToGallery } from "@ionic-native/base64-to-gallery/ngx";
 import { Contacts } from "@ionic-native/contacts/ngx";
+import { ToastController } from "@ionic/angular";
 
 @Component({
   selector: "app-home",
@@ -7,7 +10,23 @@ import { Contacts } from "@ionic-native/contacts/ngx";
   styleUrls: ["home.page.scss"],
 })
 export class HomePage {
-  myContacts: any[] = [];
+  qrData = null;
+  createdCode = null;
+  scannedCode = null;
+
+  constructor(private barcodeScanner: BarcodeScanner) {}
+
+  createCode() {
+    this.createdCode = this.qrData;
+    console.log(this.createdCode);
+  }
+
+  scanCode() {
+    this.barcodeScanner.scan().then((barcodeData) => {
+      this.scannedCode = barcodeData.text;
+    });
+  }
+  /*   myContacts: any[] = [];
   mobileNumber: any[] = [];
   constructor(private contacts: Contacts) {}
   loadContacts() {
@@ -22,5 +41,5 @@ export class HomePage {
         this.mobileNumber.push(re.phoneNumbers[0].value);
       });
     });
-  }
+  } */
 }
